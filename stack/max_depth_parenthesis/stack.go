@@ -1,0 +1,47 @@
+package main
+import "fmt"
+
+type Stack struct {
+    s [] byte
+}
+
+func (s *Stack) IsEmpty() bool {
+    length := len(s.s)
+    return length == 0
+}
+
+func (s *Stack) Length() int {
+    length := len(s.s)
+    return length
+}
+
+func (s *Stack) Print() {
+    length := len(s.s)
+    for i := 0; i < length; i++ {
+        fmt.Print(s.s[i], " ")
+    }
+    fmt.Println()
+}
+
+func (s *Stack) Push(value byte) {
+    s.s = append(s.s, value)
+}
+
+func (s *Stack) Pop() byte {
+    if s.IsEmpty() == true{
+        return ' '
+    }
+    length := len(s.s)
+    res := s.s[length-1]
+    s.s = s.s[:length-1]
+    return res
+}
+
+func (s *Stack) Top() byte {
+    if s.IsEmpty() == true{
+        return ' '
+    }
+    length := len(s.s)
+    res := s.s[length-1]
+    return res
+}
